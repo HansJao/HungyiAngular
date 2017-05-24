@@ -1,3 +1,4 @@
+import { TextileService } from './services/textile.service';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { UserService } from './services/user.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -30,7 +31,8 @@ import { TextileComponent } from './home/textile/textile.component';
     AppRoutingModule
   ],
   providers: [
-    UserService
+    UserService,
+    TextileService
   ],
   bootstrap: [AppComponent]
 })

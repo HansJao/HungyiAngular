@@ -17,9 +17,9 @@ constructor(private http: Http) {
 ngOnInit() {
   //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
   //Add 'implements OnInit' to the class.
-  this.getMakes().subscribe(values =>{
-    console.log(values);
-  });
+  // this.getMakes().subscribe(values =>{
+  //   console.log(values);
+  // });
 }
 
    getMakes() {

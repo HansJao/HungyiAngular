@@ -1,3 +1,4 @@
+import { TextileService } from './../../services/textile.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,31 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TextileComponent implements OnInit {
 
-  textileInfo: TextileInfo[];
-  constructor() { }
+  textileInfo;
+  constructor(private alltextileInfo: TextileService) { }
 
   ngOnInit() {
-    this.textileInfo = [
-      { TextileName: "CVC", TextileDetail: [{ Color: "red", Amount: 10 }, { Color: "black", Amount: 10 }] },
-      { TextileName: "TC", TextileDetail: [{ Color: "red", Amount: 2 }, { Color: "black", Amount: 3 }] },
-      { TextileName: "TC", TextileDetail: [{ Color: "red", Amount: 2 }, { Color: "black", Amount: 3 }] },
-      { TextileName: "TC", TextileDetail: [{ Color: "red", Amount: 2 }, { Color: "black", Amount: 3 }, { Color: "black", Amount: 10 }, { Color: "black", Amount: 10 }] },
-      { TextileName: "TC", TextileDetail: [{ Color: "red", Amount: 2 }, { Color: "black", Amount: 3 }] },
-      { TextileName: "TC", TextileDetail: [{ Color: "red", Amount: 2 }, { Color: "black", Amount: 3 }] },
-      { TextileName: "TC", TextileDetail: [{ Color: "red", Amount: 2 }, { Color: "black", Amount: 3 }] },
-      { TextileName: "TC", TextileDetail: [{ Color: "red", Amount: 2 }, { Color: "black", Amount: 3 }] },
-      { TextileName: "TC", TextileDetail: [{ Color: "red", Amount: 2 }, { Color: "black", Amount: 3 }, { Color: "black", Amount: 10 }, { Color: "black", Amount: 10 }, { Color: "black", Amount: 10 }] },
-      { TextileName: "TC", TextileDetail: [{ Color: "red", Amount: 2 }, { Color: "black", Amount: 3 }] },
-      { TextileName: "TC", TextileDetail: [{ Color: "red", Amount: 2 }, { Color: "black", Amount: 3 }] }]
+    this.alltextileInfo.onGetTextile().subscribe(Info => this.textileInfo = Info);
   }
-
-}
-
-class TextileInfo {
-  TextileName: string;
-  TextileDetail: TextileDetail[];
-}
-class TextileDetail {
-  Color: string;
-  Amount: number;
 }

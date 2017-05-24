@@ -21,10 +21,10 @@ export class UserService {
     //let options = new RequestOptions({ method:"",headers: headers, });
     return this.http.get('/api/user', options)
       .map(res =>{
-        debugger
+        // debugger
          res.json()
-         if( res.json() != null )
-         this.router.navigate(["home"]);
+        //  if( res.json() != null )
+        //  this.router.navigate(["home"]);
         });
   }
 
