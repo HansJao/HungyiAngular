@@ -1,4 +1,4 @@
-import { TextileService } from './../../../services/textile.service';
+import { TextileService } from './../../services/textile.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from "@angular/router";
 

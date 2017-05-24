@@ -12,8 +12,10 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { NavmenuComponent } from './navmenu/navmenu.component';
-import { TextileComponent } from './home/textile/textile.component';
-import { TextileEditComponent } from './home/textile/textile-edit/textile-edit.component';
+import { TextileComponent } from './textile/textile.component';
+import { TextileEditComponent } from './textile/textile-edit/textile-edit.component';
+import { TextileAddComponent } from './textile/textile-add/textile-add.component';
+import { TextileAllComponent } from './textile/textile-all/textile-all.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { TextileEditComponent } from './home/textile/textile-edit/textile-edit.c
     NavmenuComponent,
     TextileComponent,
     DropdownDirective,
-    TextileEditComponent
+    TextileEditComponent,
+    TextileAddComponent,
+    TextileAllComponent
   ],
   imports: [
     BrowserModule,

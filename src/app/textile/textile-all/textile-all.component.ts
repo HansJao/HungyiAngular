@@ -2,11 +2,11 @@ import { TextileService } from './../../services/textile.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-textile',
-  templateUrl: './textile.component.html',
-  styleUrls: ['./textile.component.css']
+  selector: 'app-textile-all',
+  templateUrl: './textile-all.component.html',
+  styleUrls: ['./textile-all.component.css']
 })
-export class TextileComponent implements OnInit {
+export class TextileAllComponent implements OnInit {
 
   textileInfo;
   constructor(private alltextileInfo: TextileService) { }
@@ -14,4 +14,5 @@ export class TextileComponent implements OnInit {
   ngOnInit() {
     this.alltextileInfo.onGetTextile().subscribe(Info => this.textileInfo = Info);
   }
+
 }
