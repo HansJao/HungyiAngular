@@ -1,3 +1,4 @@
+import { TextileInfo } from './../../models/textileInfo';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 @Component({
@@ -7,14 +8,20 @@ import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 })
 export class TextileAddComponent implements OnInit {
   myForm: FormGroup;
+  textileDefault: TextileInfo = new TextileInfo();
+  textileSample: TextileInfo[] = [];
   constructor(private _fb: FormBuilder) { }
 
   ngOnInit() {
+    this.textileDefault.textileColor = 'red';
+    this.textileSample.push(this.textileDefault);
+    console.log(this.textileSample);
     this.myForm = this._fb.group({
-      name: ['', [Validators.required, Validators.minLength(5)]],
-      addresses: this._fb.array([])
+      //name: ['', [Validators.required, Validators.minLength(5)]],
+      textile: this._fb.array([])
     });
     console.log(this.myForm)
+
 
     // add address
     this.addAddress();
@@ -24,15 +31,25 @@ export class TextileAddComponent implements OnInit {
     //   console.log(x);
     // })
   }
+
+  onChang(){
+  }
   initAddress() {
     return this._fb.group({
-      street: ['', Validators.required],
-      postcode: ['123']
+      productID: ['', Validators.required],
+      textileName: ['123'],
+      textileColor: [this.textileDefault.textileColor],
+      textileSpecification: [''],
+      cost: [''],
+      weight: [''],
+      stored: [''],
+      remark: ['']
+
     });
   }
 
   addAddress() {
-    const control = <FormArray>this.myForm.controls['addresses'];
+    const control = <FormArray>this.myForm.controls['textile'];
     const addrCtrl = this.initAddress();
 
     control.push(addrCtrl);
@@ -44,7 +61,7 @@ export class TextileAddComponent implements OnInit {
   }
 
   removeAddress(i: number) {
-    const control = <FormArray>this.myForm.controls['addresses'];
+    const control = <FormArray>this.myForm.controls['textile'];
     control.removeAt(i);
   }
 
@@ -57,11 +74,11 @@ export class TextileAddComponent implements OnInit {
 }
 
 export interface Customer {
-    name: string;
-    addresses: Address[];
+  name: string;
+  addresses: Address[];
 }
 
 export interface Address {
-    street: string;
-    postcode: string;
+  street: string;
+  postcode: string;
 }
