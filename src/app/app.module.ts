@@ -4,7 +4,7 @@ import { UserService } from './services/user.service';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import { TextileComponent } from './textile/textile.component';
 import { TextileEditComponent } from './textile/textile-edit/textile-edit.component';
 import { TextileAddComponent } from './textile/textile-add/textile-add.component';
 import { TextileAllComponent } from './textile/textile-all/textile-all.component';
+import { TextileFormComponent } from './textile/textile-form/textile-form.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +29,15 @@ import { TextileAllComponent } from './textile/textile-all/textile-all.component
     DropdownDirective,
     TextileEditComponent,
     TextileAddComponent,
-    TextileAllComponent
+    TextileAllComponent,
+    TextileFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     UserService,

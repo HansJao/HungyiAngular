@@ -16,8 +16,8 @@ const appRoutes: Routes = [
     {
         path: 'textile', component: TextileComponent, children: [
             { path: '', component: TextileAllComponent },
-            { path: ':id', component: TextileEditComponent },
-            { path: 'Add', component: TextileAddComponent }]
+            { path: 'edit/:id', component: TextileEditComponent },
+            { path: 'add', component: TextileAddComponent }]
     }
 
 
