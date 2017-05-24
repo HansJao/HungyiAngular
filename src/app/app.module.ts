@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { NavmenuComponent } from './navmenu/navmenu.component';
 import { TextileComponent } from './home/textile/textile.component';
+import { TextileEditComponent } from './home/textile/textile-edit/textile-edit.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TextileComponent } from './home/textile/textile.component';
     RegisterComponent,
     NavmenuComponent,
     TextileComponent,
-    DropdownDirective
+    DropdownDirective,
+    TextileEditComponent
   ],
   imports: [
     BrowserModule,

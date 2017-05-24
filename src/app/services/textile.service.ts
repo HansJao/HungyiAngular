@@ -10,4 +10,11 @@ export class TextileService {
       .map(res => res.json()
       );
   }
+
+  onGetTextileByID(id: number) {
+    var url = '/api/textile/' + id;
+    return this.http.get(url)
+      .map(res => res.json()
+      );
+  }
 }
