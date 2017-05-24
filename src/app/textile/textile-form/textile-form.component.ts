@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TextileFormComponent implements OnInit {
  @Input('group')
-    public adressForm: FormGroup;
+    public textileForm: FormGroup;
   constructor() { }
 
   ngOnInit() {

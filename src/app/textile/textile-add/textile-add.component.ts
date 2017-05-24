@@ -9,12 +9,17 @@ import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 export class TextileAddComponent implements OnInit {
   myForm: FormGroup;
   textileDefault: TextileInfo = new TextileInfo();
+  textileDefault1: TextileInfo = new TextileInfo();
   textileSample: TextileInfo[] = [];
   constructor(private _fb: FormBuilder) { }
 
   ngOnInit() {
     this.textileDefault.textileColor = 'red';
+    this.textileDefault.textileName = '1X1';
+    this.textileDefault1.textileColor = 'black';
+    this.textileDefault1.textileName = 'CVC';
     this.textileSample.push(this.textileDefault);
+    this.textileSample.push(this.textileDefault1);
     console.log(this.textileSample);
     this.myForm = this._fb.group({
       //name: ['', [Validators.required, Validators.minLength(5)]],
@@ -32,12 +37,13 @@ export class TextileAddComponent implements OnInit {
     // })
   }
 
-  onChang(){
+  onChange(textileInput: TextileInfo) {
+    this.textileDefault = textileInput;
   }
   initAddress() {
     return this._fb.group({
       productID: ['', Validators.required],
-      textileName: ['123'],
+      textileName: [this.textileDefault.textileName],
       textileColor: [this.textileDefault.textileColor],
       textileSpecification: [''],
       cost: [''],

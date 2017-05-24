@@ -1,8 +1,14 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-1 btn-group " *ngFor="let sample of textileSample">
+          <button type="button" class="btn btn-primary " (click)="onChange(sample)">{{sample.textileName}}</button>
+        </div>    
+          
+      </div>
       <div class="margin-20">
-        <button class="btn btn-primary" (click)="onChang()" >TestSample</button>
+
         <h4>Add textile</h4>
       </div>
       <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
@@ -15,9 +21,9 @@
         </div>-->
         <!--addresses-->
         <div formArrayName="textile">
-          <div *ngFor="let address of myForm.controls.textile.controls; let i=index" class="panel panel-default">
+          <div *ngFor="let textile of myForm.controls.textile.controls; let i=index" class="panel panel-default">
             <div class="panel-heading">
-              <span>Textile {{i + 1}}</span>
+              <span>Textile:{{textile.controls.textileName.value}}</span>
               <span class="glyphicon glyphicon-remove pull-right" *ngIf="myForm.controls.textile.controls.length > 1" (click)="removeAddress(i)"></span>
             </div>
             <div class="panel-body" [formGroupName]="i">
