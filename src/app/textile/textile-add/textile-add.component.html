@@ -3,15 +3,15 @@
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-1 btn-group " *ngFor="let sample of textileSample">
-          <button type="button" class="btn btn-primary " (click)="onChange(sample)">{{sample.textileName}}</button>
-        </div>    
-          
+          <button type="button" class="btn btn-primary " (click)="onChange(sample)">{{sample.productName}}</button>
+        </div>
+
       </div>
       <div class="margin-20">
 
         <h4>Add textile</h4>
       </div>
-      <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
+      <form [formGroup]="myForm" novalidate>
         <!--<div class="form-group">
           <label>Name</label>
           <input type="text" class="form-control" formControlName="name">
@@ -33,16 +33,19 @@
         </div>
 
         <div class="margin-20">
-          <a (click)="addAddress()" style="cursor: default">
-            Add another address +
-          </a>
+          <button (click)="addAddress()" class="btn" [disabled]="textileDefault.productID == null">
+            Add another textile +
+          </button>
+          <small *ngIf="textileDefault.productID == null" class="text-danger">
+              Choose a textile
+            </small>
         </div>
 
         <div class="margin-20">
-          <button type="submit" class="btn btn-primary pull-right" [disabled]="!myForm.valid">Submit</button>
+          <button type="submit" class="btn btn-primary pull-right" (click)="save(myForm)" [disabled]="!myForm.valid">Submit</button>
         </div>
         <div class="clearfix"></div>
-
+        <!--可用來查看資料格式-->
         <div class="margin-20">
           <div>myForm details:-</div>
           <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>

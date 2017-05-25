@@ -1,3 +1,4 @@
+import { TextileService } from './../../services/textile.service';
 import { TextileInfo } from './../../models/textileInfo';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
@@ -8,28 +9,21 @@ import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 })
 export class TextileAddComponent implements OnInit {
   myForm: FormGroup;
-  textileDefault: TextileInfo = new TextileInfo();
-  textileDefault1: TextileInfo = new TextileInfo();
-  textileSample: TextileInfo[] = [];
-  constructor(private _fb: FormBuilder) { }
+  textileDefault: any = [];
+  textileSample;
+  constructor(private _fb: FormBuilder, private textileService: TextileService) { }
 
   ngOnInit() {
-    this.textileDefault.textileColor = 'red';
-    this.textileDefault.textileName = '1X1';
-    this.textileDefault1.textileColor = 'black';
-    this.textileDefault1.textileName = 'CVC';
-    this.textileSample.push(this.textileDefault);
-    this.textileSample.push(this.textileDefault1);
-    console.log(this.textileSample);
     this.myForm = this._fb.group({
       //name: ['', [Validators.required, Validators.minLength(5)]],
       textile: this._fb.array([])
     });
-    console.log(this.myForm)
-
+    this.textileService.onGetProductInfo().subscribe(product => {
+      this.textileSample = product;
+    });
 
     // add address
-    this.addAddress();
+    // this.addAddress();
 
     /* subscribe to addresses value changes */
     // this.myForm.controls['addresses'].valueChanges.subscribe(x => {
@@ -42,9 +36,9 @@ export class TextileAddComponent implements OnInit {
   }
   initAddress() {
     return this._fb.group({
-      productID: ['', Validators.required],
-      textileName: [this.textileDefault.textileName],
-      textileColor: [this.textileDefault.textileColor],
+      productID: [this.textileDefault.productID],
+      textileName: [this.textileDefault.productName],
+      textileColor: [''],
       textileSpecification: [''],
       cost: [''],
       weight: [''],
@@ -71,20 +65,10 @@ export class TextileAddComponent implements OnInit {
     control.removeAt(i);
   }
 
-  save(model: Customer) {
+  save(model) {
     // call API to save
     // ...
-    console.log(model);
+    this.textileService.onAddTextile(model.value.textile).subscribe(s=>console.log(s));
   }
 
-}
-
-export interface Customer {
-  name: string;
-  addresses: Address[];
-}
-
-export interface Address {
-  street: string;
-  postcode: string;
 }

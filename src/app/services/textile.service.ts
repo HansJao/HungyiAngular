@@ -17,4 +17,16 @@ export class TextileService {
       .map(res => res.json()
       );
   }
+   onAddTextile(textileAddInfo) {
+    var url = '/api/textile';
+    return this.http.post(url,textileAddInfo)
+      .map(res => res.json()
+      );
+  }
+  onGetProductInfo() {
+    var url = '/api/textile/product';
+    return this.http.get(url)
+      .map(res => res.json()
+      );
+  }
 }
