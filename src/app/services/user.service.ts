@@ -6,11 +6,11 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UserService {
 
-  constructor(private http: Http,private router: Router) { }
+  constructor(private http: Http, private router: Router) { }
 
-  onLogin(account: string,password:string) {
+  onLogin(account: string, password: string) {
     let header: Headers = new Headers();
-    let date : Date = new Date();
+    let date: Date = new Date();
     console.log(date.toLocaleString())
     header.append("Authorization", "Basic username:" + btoa("test"));
     header.append("Datetime", "date.toLocaleString()");
@@ -20,12 +20,7 @@ export class UserService {
     let options = new RequestOptions({ headers: header });
     //let options = new RequestOptions({ method:"",headers: headers, });
     return this.http.get('/api/user', options)
-      .map(res =>{
-        // debugger
-         res.json()
-        //  if( res.json() != null )
-        //  this.router.navigate(["home"]);
-        });
+      .map(res => res.json());
   }
 
 }
