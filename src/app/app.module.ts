@@ -1,3 +1,4 @@
+import { ProductService } from './services/product.service';
 import { TextileService } from './services/textile.service';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { UserService } from './services/user.service';
@@ -17,6 +18,7 @@ import { TextileEditComponent } from './textile/textile-edit/textile-edit.compon
 import { TextileAddComponent } from './textile/textile-add/textile-add.component';
 import { TextileAllComponent } from './textile/textile-all/textile-all.component';
 import { TextileFormComponent } from './textile/textile-form/textile-form.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { TextileFormComponent } from './textile/textile-form/textile-form.compon
     TextileEditComponent,
     TextileAddComponent,
     TextileAllComponent,
-    TextileFormComponent
+    TextileFormComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { TextileFormComponent } from './textile/textile-form/textile-form.compon
   ],
   providers: [
     UserService,
-    TextileService
+    TextileService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })

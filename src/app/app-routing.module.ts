@@ -1,3 +1,4 @@
+import { ProductComponent } from './product/product.component';
 import { TextileAllComponent } from './textile/textile-all/textile-all.component';
 import { TextileAddComponent } from './textile/textile-add/textile-add.component';
 import { TextileEditComponent } from './textile/textile-edit/textile-edit.component';
@@ -18,7 +19,8 @@ const appRoutes: Routes = [
             { path: '', component: TextileAllComponent },
             { path: 'edit/:id', component: TextileEditComponent },
             { path: 'add', component: TextileAddComponent }]
-    }
+    },
+    { path: 'product', component: ProductComponent },
 
 
 
