@@ -1,14 +1,14 @@
-import { Http } from '@angular/http';
+import { AuthenticationService } from './authentication.service';
+import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class TextileService {
 
-  constructor(private http: Http ) { }
+  constructor(private http: Http, private authentication: AuthenticationService) { }
   onGetTextile() {
-    return this.http.get('/api/textile')
-      .map(res => res.json()
-      );
+    var uri = '/api/textile';
+    return this.authentication.onGet(uri, '');
   }
 
   onGetTextileByID(id: number) {
@@ -17,9 +17,9 @@ export class TextileService {
       .map(res => res.json()
       );
   }
-   onAddTextile(textileAddInfo) {
+  onAddTextile(textileAddInfo) {
     var url = '/api/textile';
-    return this.http.post(url,textileAddInfo)
+    return this.http.post(url, textileAddInfo)
       .map(res => res.json()
       );
   }

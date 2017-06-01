@@ -12,7 +12,7 @@ export class UserService {
     let header: Headers = new Headers();
     let date: Date = new Date();
     console.log(date.toLocaleString())
-    header.append("Authorization", "Basic username:" + btoa("test"));
+    header.append("Authorization", account + ":" + password);
     header.append("Datetime", "date.toLocaleString()");
     header.append("Account", account);
     header.append("Password", password);

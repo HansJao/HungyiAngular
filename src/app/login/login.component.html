@@ -16,7 +16,7 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<form id="login-form" (ngSubmit)="onLogin()" #f="ngForm" role="form">
+								<form id="login-form" (ngSubmit)="login()" #f="ngForm" role="form">
 									<div class="form-group">
 										<input type="text" name="username" id="username" [(ngModel)]="user.username" tabindex="1" class="form-control" placeholder="Username" value="" required>
 									</div>

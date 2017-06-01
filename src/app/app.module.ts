@@ -1,3 +1,4 @@
+import { AuthenticationService } from './services/authentication.service';
 import { ProductService } from './services/product.service';
 import { TextileService } from './services/textile.service';
 import { DropdownDirective } from './shared/dropdown.directive';
@@ -45,7 +46,8 @@ import { ProductComponent } from './product/product.component';
   providers: [
     UserService,
     TextileService,
-    ProductService
+    ProductService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })
