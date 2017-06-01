@@ -12,7 +12,11 @@ export class TextileAllComponent implements OnInit {
   constructor(private alltextileInfo: TextileService) { }
 
   ngOnInit() {
-    this.alltextileInfo.onGetTextile().subscribe(Info => this.textileInfo = Info);
+    this.alltextileInfo.onGetTextile().subscribe(Info => this.textileInfo = Info, (err) => {
+      if (err === 'Unauthorized') {
+        alert('Unauthorized')
+      }
+    });
   }
 
 }

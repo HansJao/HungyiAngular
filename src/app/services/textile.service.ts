@@ -8,25 +8,19 @@ export class TextileService {
   constructor(private http: Http, private authentication: AuthenticationService) { }
   onGetTextile() {
     var uri = '/api/textile';
-    return this.authentication.onGet(uri, '');
+    return this.authentication.onGet(uri);
   }
 
   onGetTextileByID(id: number) {
-    var url = '/api/textile/' + id;
-    return this.http.get(url)
-      .map(res => res.json()
-      );
+    var uri = '/api/textile/' + id;
+    return this.authentication.onGet(uri);
   }
   onAddTextile(textileAddInfo) {
-    var url = '/api/textile';
-    return this.http.post(url, textileAddInfo)
-      .map(res => res.json()
-      );
+    var uri = '/api/textile';
+    return this.authentication.onPost(uri, textileAddInfo);
   }
   onGetProductInfo() {
-    var url = '/api/textile/product';
-    return this.http.get(url)
-      .map(res => res.json()
-      );
+    var uri = '/api/textile/product';
+    return this.authentication.onGet(uri);
   }
 }

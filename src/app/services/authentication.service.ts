@@ -1,14 +1,19 @@
+import { Router } from '@angular/router';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+
+
 @Injectable()
 export class AuthenticationService {
     public token: string;
-    constructor(private http: Http) {
+    constructor(private http: Http, private router: Router) {
         // set token if saved in local storage
         var currentUser = localStorage.getItem('currentUser');
-        this.token = currentUser ;
+        this.token = currentUser;
     }
 
     login(username: string, password: string): Observable<boolean> {
@@ -19,7 +24,7 @@ export class AuthenticationService {
                 if (token) {
                     // set token property
                     this.token = token;
-                    
+
                     // store username and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', username + ":" + token);
 
@@ -38,15 +43,27 @@ export class AuthenticationService {
         localStorage.removeItem('currentUser');
     }
 
-    onGet(uri: string, parameter: string) {
+    onGet(uri: string) {
         let header: Headers = new Headers();
         header.append("Authorization", localStorage.getItem('currentUser'));
         let options = new RequestOptions({ headers: header });
         return this.http.get(uri, options)
-            .map(res => res.json());
-    }
-    onPost() {
+            .map(res => res.json())
+            .catch(e => {
+                if (e.status === 401) {
 
+                    this.router.navigate(['login']);
+                    return Observable.throw('Unauthorized');
+                }
+                // do any other checking for statuses here
+            });
+    }
+    onPost(uri: string, textileAddInfo) {
+        let header: Headers = new Headers();
+        header.append("Authorization", localStorage.getItem('currentUser'));
+        let options = new RequestOptions({ headers: header });
+        return this.http.post(uri, textileAddInfo, options)
+            .map(res => res.json());
     }
 
 }
