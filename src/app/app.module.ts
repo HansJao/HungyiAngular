@@ -1,3 +1,4 @@
+import { AuthGuardService } from './services/auth-guard.service';
 import { AuthenticationService } from './services/authentication.service';
 import { ProductService } from './services/product.service';
 import { TextileService } from './services/textile.service';
@@ -20,6 +21,7 @@ import { TextileAddComponent } from './textile/textile-add/textile-add.component
 import { TextileAllComponent } from './textile/textile-all/textile-all.component';
 import { TextileFormComponent } from './textile/textile-form/textile-form.component';
 import { ProductComponent } from './product/product.component';
+import { AuthGuardComponent } from './services/auth-guard/auth-guard.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { ProductComponent } from './product/product.component';
     TextileAddComponent,
     TextileAllComponent,
     TextileFormComponent,
-    ProductComponent
+    ProductComponent,
+    AuthGuardComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { ProductComponent } from './product/product.component';
     UserService,
     TextileService,
     ProductService,
-    AuthenticationService
+    AuthenticationService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

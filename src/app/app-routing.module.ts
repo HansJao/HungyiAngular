@@ -1,3 +1,4 @@
+import { AuthGuardService } from './services/auth-guard.service';
 import { ProductComponent } from './product/product.component';
 import { TextileAllComponent } from './textile/textile-all/textile-all.component';
 import { TextileAddComponent } from './textile/textile-add/textile-add.component';
@@ -15,7 +16,7 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'home', component: HomeComponent },
     {
-        path: 'textile', component: TextileComponent, children: [
+        path: 'textile',canActivate:[AuthGuardService], component: TextileComponent, children: [
             { path: '', component: TextileAllComponent },
             { path: 'edit/:id', component: TextileEditComponent },
             { path: 'add', component: TextileAddComponent }]
