@@ -21,6 +21,7 @@ export class AuthGuardService implements CanActivate {
     //   );
     if (this.authService.token == null) {
       alert('尚未登入！')
+      return false;
     }
     return true;
   }

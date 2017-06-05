@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from "app/services/authentication.service";
 
 @Component({
   selector: 'app-navmenu',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navmenu.component.css']
 })
 export class NavmenuComponent implements OnInit {
-
-  constructor() { }
+  isLogin : boolean = false;
+  constructor(private authService : AuthenticationService) { }
 
   ngOnInit() {
+    this.isLogin = this.authService.token != null
   }
   isIn = false;   // store state
   toggleState() { // click handler

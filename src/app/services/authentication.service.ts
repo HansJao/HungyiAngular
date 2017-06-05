@@ -12,7 +12,7 @@ export class AuthenticationService {
     public token: string;
     constructor(private http: Http, private router: Router) {
         // set token if saved in local storage
-        var currentUser = localStorage.getItem('currentUser');
+        var currentUser = localStorage.getItem('userToken');
         this.token = currentUser;
     }
 
@@ -26,7 +26,7 @@ export class AuthenticationService {
                     this.token = token;
 
                     // store username and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', username + ":" + token);
+                    localStorage.setItem('userToken', username + ":" + token);
 
                     // return true to indicate successful login
                     return true;
@@ -40,12 +40,12 @@ export class AuthenticationService {
     logout(): void {
         // clear token remove user from local storage to log user out
         this.token = null;
-        localStorage.removeItem('currentUser');
+        localStorage.removeItem('userToken');
     }
 
     onGet(uri: string) {
         let header: Headers = new Headers();
-        header.append("Authorization", localStorage.getItem('currentUser'));
+        header.append("Authorization", localStorage.getItem('userToken'));
         let options = new RequestOptions({ headers: header });
         return this.http.get(uri, options)
             .map(res => res.json())
@@ -60,7 +60,7 @@ export class AuthenticationService {
     }
     onPost(uri: string, textileAddInfo) {
         let header: Headers = new Headers();
-        header.append("Authorization", localStorage.getItem('currentUser'));
+        header.append("Authorization", localStorage.getItem('userToken'));
         let options = new RequestOptions({ headers: header });
         return this.http.post(uri, textileAddInfo, options)
             .map(res => res.json());

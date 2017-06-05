@@ -1,7 +1,7 @@
 <div class="container-fluid testimonial-group">
   <div class="row text-center">
     <div class="col-xs-12 col-sm-3 col-md-2" *ngFor="let textileEl of textileInfo">
-      <h3  routerLink="edit/{{textileEl.productID}}">{{textileEl.textileName}}</h3>
+      <button type="button" class="btn btn-block btn-outline btn-info"  routerLink="edit/{{textileEl.productID}}">{{textileEl.textileName}}</button>
        <table class="table table-hover table-striped">
         <thead>
           <tr>

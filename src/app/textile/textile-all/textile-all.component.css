@@ -7,6 +7,15 @@
   display: inline-block;
   float: none;
 }
+.btn-outline {
+    background-color: transparent;
+    color: inherit;
+    transition: all .5s;
+}
+
+.btn-info.btn-outline {
+    color: #5bc0de;
+}
 
 /* Decorations */
 .col-xs-12 {   padding-bottom: 20px; padding-top: 18px; }

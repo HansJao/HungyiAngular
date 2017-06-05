@@ -21,7 +21,6 @@ import { TextileAddComponent } from './textile/textile-add/textile-add.component
 import { TextileAllComponent } from './textile/textile-all/textile-all.component';
 import { TextileFormComponent } from './textile/textile-form/textile-form.component';
 import { ProductComponent } from './product/product.component';
-import { AuthGuardComponent } from './services/auth-guard/auth-guard.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +35,7 @@ import { AuthGuardComponent } from './services/auth-guard/auth-guard.component';
     TextileAddComponent,
     TextileAllComponent,
     TextileFormComponent,
-    ProductComponent,
-    AuthGuardComponent
+    ProductComponent
   ],
   imports: [
     BrowserModule,
