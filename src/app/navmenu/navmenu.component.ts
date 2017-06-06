@@ -7,11 +7,11 @@ import { AuthenticationService } from "app/services/authentication.service";
   styleUrls: ['./navmenu.component.css']
 })
 export class NavmenuComponent implements OnInit {
-  isLogin : boolean = false;
-  constructor(private authService : AuthenticationService) { }
+  isLogin: boolean = false;
+  constructor(private authService: AuthenticationService) { }
 
   ngOnInit() {
-    this.isLogin = this.authService.token != null
+    this.authService.tokenEmit.subscribe(token => this.isLogin = token != null);
   }
   isIn = false;   // store state
   toggleState() { // click handler

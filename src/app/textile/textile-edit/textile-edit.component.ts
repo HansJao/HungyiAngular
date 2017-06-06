@@ -10,20 +10,30 @@ import { ActivatedRoute, Params } from "@angular/router";
 export class TextileEditComponent implements OnInit {
 
   textileInfo;
-  id;
-  constructor(private route: ActivatedRoute, private alltextileInfo: TextileService) { }
-
+  productID;
+  editRowId: any;
+  isEditTextile = [];
+  constructor(private route: ActivatedRoute, private textileService: TextileService) { }
+  toggle(val) {
+    this.editRowId = val;
+  }
   ngOnInit() {
     this.route.params.subscribe(
       (param: Params) => {
-        console.log(param['id'])
-        this.id = param['id'];
+        this.productID = param['id'];
       }
     );
-    this.alltextileInfo.onGetTextileByID(this.id).subscribe(Info => {
-    this.textileInfo = Info;
-      console.log(this.textileInfo);
+    this.textileService.onGetTextileByID(this.productID).subscribe(Info => {
+      this.textileInfo = Info;
     });
+  }
+
+  textChange(textileElement) {
+    if (this.isEditTextile.includes(textileElement)) {
+
+    } else {
+      this.isEditTextile.push(textileElement)
+    }
   }
 
 }

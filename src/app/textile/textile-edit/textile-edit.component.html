@@ -1,7 +1,7 @@
-<div class="container-fluid testimonial-group">
+<div class="container-fluid">
   <div class="row text-center">
-    <div class="col-xs-12 col-sm-3 col-md-2">
-      <table class="table table-hover table-striped">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <table class="table table-hover table-striped col-xs-12 col-sm-12 col-md-12">
         <thead>
           <tr>
             <th>TextileID</th>
@@ -14,16 +14,26 @@
             <th>Weight</th>
           </tr>
         </thead>
-        <tr *ngFor="let textileEl of textileInfo">
+        <tr *ngFor="let textileEl of textileInfo" (click)="toggle(textileEl.textileID)" (keypress)="textChange(textileEl)">
           <td>{{textileEl.textileID}}</td>
           <td>{{textileEl.productID}}</td>
-          <td>{{textileEl.importUser}}</td>
-          <td>{{textileEl.textileName}}</td>
-          <td>{{textileEl.textileColor}}</td>
-          <td>{{textileEl.textileSpecification}}</td>
-          <td>{{textileEl.cost}}</td>
-          <td>{{textileEl.weight}}</td>
+          <td *ngIf="textileEl.textileID != editRowId">{{textileEl.importUser}}</td>
+          <td *ngIf="textileEl.textileID == editRowId"><input type="text" [(ngModel)]="textileEl.importUser" /></td>
+          <td *ngIf="textileEl.textileID != editRowId">{{textileEl.textileName}}</td>
+          <td *ngIf="textileEl.textileID == editRowId"><input type="text" [(ngModel)]="textileEl.textileName" /></td>
+          <td *ngIf="textileEl.textileID != editRowId">{{textileEl.textileColor}}</td>
+          <td *ngIf="textileEl.textileID == editRowId"><input type="text" [(ngModel)]="textileEl.textileColor" /></td>
+          <td *ngIf="textileEl.textileID != editRowId">{{textileEl.textileSpecification}}</td>
+          <td *ngIf="textileEl.textileID == editRowId"><input type="text" [(ngModel)]="textileEl.textileSpecification" /></td>
+          <td *ngIf="textileEl.textileID != editRowId">{{textileEl.cost}}</td>
+          <td *ngIf="textileEl.textileID == editRowId"><input type="text" [(ngModel)]="textileEl.cost" /></td>
+          <td *ngIf="textileEl.textileID != editRowId">{{textileEl.weight}}</td>
+          <td *ngIf="textileEl.textileID == editRowId"><input type="text" [(ngModel)]="textileEl.weight" /></td>
+          <!--<input type="text" [ngModel]="mymodel"  (ngModelChange)="textChange(textileEl)" /> {{mymodel}}-->
+
+
         </tr>
+        <button (click)="textChange(textileInfo)" >Send</button>
       </table>
     </div>
   </div>

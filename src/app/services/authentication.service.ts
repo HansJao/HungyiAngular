@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -10,6 +10,7 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class AuthenticationService {
     public token: string;
+    tokenEmit = new EventEmitter<string>();
     constructor(private http: Http, private router: Router) {
         // set token if saved in local storage
         var currentUser = localStorage.getItem('userToken');
@@ -24,7 +25,7 @@ export class AuthenticationService {
                 if (token) {
                     // set token property
                     this.token = token;
-
+                    this.tokenEmit.emit(this.token.slice());
                     // store username and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('userToken', username + ":" + token);
 
@@ -40,6 +41,7 @@ export class AuthenticationService {
     logout(): void {
         // clear token remove user from local storage to log user out
         this.token = null;
+        this.tokenEmit.emit(this.token);
         localStorage.removeItem('userToken');
     }
 
