@@ -68,4 +68,12 @@ export class AuthenticationService {
             .map(res => res.json());
     }
 
+    onPut(uri: string, textileList) {
+        let header: Headers = new Headers();
+        header.append("Authorization", localStorage.getItem('userToken'));
+        let options = new RequestOptions({ headers: header });
+        return this.http.put(uri, textileList, options)
+            .map(res => res.json());
+    }
+
 }

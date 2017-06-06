@@ -19,6 +19,11 @@ export class TextileService {
     var uri = '/api/textile';
     return this.authentication.onPost(uri, textileAddInfo);
   }
+ onUpdateTextile(textileList) {
+    var uri = '/api/textile/UpdateTextile';
+    return this.authentication.onPost(uri, textileList);
+  }
+
   onGetProductInfo() {
     var uri = '/api/textile/product';
     return this.authentication.onGet(uri);
