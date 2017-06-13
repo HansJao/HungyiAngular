@@ -11,20 +11,20 @@
     <div class="collapse navbar-collapse" [ngClass]="{ 'in': isIn }"> id="myNavbar">
       <ul class="nav navbar-nav">
         <li routerLinkActive="active" [routerLink]="['/home']"><a>Home</a></li>
-        <li routerLinkActive="active" class="dropdown" appDropdown>
+        <li routerLinkActive="active" class="dropdown" (mouseleave)="leave()" (mouseenter)="over()" [ngClass]="{ 'open': textileIsOpen == true }">
           <a class="dropdown-toggle" data-toggle="dropdown">Textile <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a [routerLink]="['/textile']">Textile Info</a></li>
             <li><a [routerLink]="['/textile/add']">Tetile Add</a></li>
           </ul>
         </li>
-        <li routerLinkActive="active" [routerLink]="['/product']"><a >Product</a></li>
+        <li routerLinkActive="active" [routerLink]="['/product']"><a>Product</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a *ngIf="isLogin == true"><span class="glyphicon glyphicon-user"></span> User Info</a></li>
         <li>
-        <a *ngIf="isLogin == false" [routerLink]="['/']"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-        <a *ngIf="isLogin == true" [routerLink]="['/']"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+          <a *ngIf="isLogin == false" [routerLink]="['/']"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+          <a *ngIf="isLogin == true" [routerLink]="['/']"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
         </li>
       </ul>
     </div>
