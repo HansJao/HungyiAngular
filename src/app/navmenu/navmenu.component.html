@@ -6,19 +6,19 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand">WebSite</a>
+      <a class="navbar-brand">宏羿</a>
     </div>
     <div class="collapse navbar-collapse" [ngClass]="{ 'in': isIn }"> id="myNavbar">
       <ul class="nav navbar-nav">
-        <li routerLinkActive="active" [routerLink]="['/home']"><a>Home</a></li>
+        <li routerLinkActive="active" [routerLink]="['/home']"><a>首頁</a></li>
         <li routerLinkActive="active" class="dropdown" (mouseleave)="leave()" (mouseenter)="over()" [ngClass]="{ 'open': textileIsOpen == true }">
-          <a class="dropdown-toggle" data-toggle="dropdown">Textile <span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown">布種<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a [routerLink]="['/textile']">Textile Info</a></li>
-            <li><a [routerLink]="['/textile/add']">Tetile Add</a></li>
+            <li><a [routerLink]="['/textile']">所有布</a></li>
+            <li><a [routerLink]="['/textile/add']">新增布</a></li>
           </ul>
         </li>
-        <li routerLinkActive="active" [routerLink]="['/product']"><a>Product</a></li>
+        <li routerLinkActive="active" [routerLink]="['/product']"><a>品名</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a *ngIf="isLogin == true"><span class="glyphicon glyphicon-user"></span> User Info</a></li>

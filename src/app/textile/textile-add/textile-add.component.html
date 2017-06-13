@@ -10,7 +10,8 @@
       </div>
       <div class="margin-20">
 
-        <h4>Add textile</h4>
+        <!--<h4>加入</h4>-->
+        <br>
       </div>
       <form [formGroup]="myForm" novalidate>
         <!--<div class="form-group">
@@ -24,7 +25,7 @@
         <div formArrayName="textile">
           <div *ngFor="let textile of myForm.controls.textile.controls; let i=index" class="panel panel-default">
             <div class="panel-heading">
-              <span>Textile:{{textile.controls.textileName.value}}</span>
+              <span>布種:{{textile.controls.textileName.value}}</span>
               <span class="glyphicon glyphicon-remove pull-right" *ngIf="myForm.controls.textile.controls.length > 1" (click)="removeAddress(i)"></span>
             </div>
             <div class="panel-body" [formGroupName]="i">
@@ -35,15 +36,15 @@
 
         <div class="margin-20">
           <button (click)="addAddress()" class="btn" [disabled]="textileDefault.productID == null">
-            Add another textile +
+            新增布 +
           </button>
           <small *ngIf="textileDefault.productID == null" class="text-danger">
-              Choose a textile
+              請點選布種
             </small>
         </div>
 
         <div class="margin-20">
-          <button type="submit" class="btn btn-primary pull-right" (click)="save(myForm)" [disabled]="!myForm.valid">Submit</button>
+          <button type="submit" class="btn btn-primary pull-right" (click)="save(myForm)" [disabled]="!myForm.valid">送出</button>
         </div>
         <div class="clearfix"></div>
         <!--可用來查看資料格式-->

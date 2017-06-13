@@ -5,10 +5,10 @@
 					<div class="panel-heading">
 						<div class="row">
 							<div class="col-xs-6">
-								<a [routerLink]="['/login']" class="active" id="login-form-link">Login</a>
+								<a [routerLink]="['/login']" class="active" id="login-form-link">登入</a>
 							</div>
 							<div class="col-xs-6">
-								<a [routerLink]="['/register']" id="register-form-link">Register</a>
+								<a [routerLink]="['/register']" id="register-form-link">激活</a>
 							</div>
 						</div>
 						<hr>
@@ -18,19 +18,19 @@
 							<div class="col-lg-12">
 								<form id="login-form" (ngSubmit)="login()" #f="ngForm" role="form">
 									<div class="form-group">
-										<input type="text" name="username" id="username" [(ngModel)]="user.username" tabindex="1" class="form-control" placeholder="Username" value="" required>
+										<input type="text" name="username" id="username" [(ngModel)]="user.username" tabindex="1" class="form-control" placeholder="使用者名稱" value="" required>
 									</div>
 									<div class="form-group">
-										<input type="password" name="password" id="password" [(ngModel)]="user.password" tabindex="2" class="form-control" placeholder="Password" required>
+										<input type="password" name="password" id="password" [(ngModel)]="user.password" tabindex="2" class="form-control" placeholder="使用者密碼" required>
 									</div>
 									<div class="form-group text-center">
 										<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-										<label for="remember"> Remember Me</label>
+										<label for="remember"> 不要忘記我</label>
 									</div>
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-6 col-sm-offset-3">
-												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In" [disabled]="!f.form.valid">
+												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="登入" [disabled]="!f.form.valid">
 											</div>
 										</div>
 									</div>
@@ -38,7 +38,7 @@
 										<div class="row">
 											<div class="col-lg-12">
 												<div class="text-center">
-													<a href="#" tabindex="5" class="forgot-password">Forgot Password?</a>
+													<a href="#" tabindex="5" class="forgot-password">忘記了…</a>
 												</div>
 											</div>
 										</div>
