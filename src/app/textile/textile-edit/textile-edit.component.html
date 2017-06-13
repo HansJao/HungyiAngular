@@ -14,7 +14,7 @@
             <th>註記</th>
           </tr>
         </thead>
-        <tr *ngFor="let textileEl of textileInfo" (click)="toggle(textileEl.textileID)" (keypress)="textChange(textileEl)">
+        <tr *ngFor="let textileEl of textileInfo" (click)="toggle(textileEl.textileID)" (change)="textChange(textileEl)" >
           <!--<td>{{textileEl.textileID}}</td>
           <td>{{textileEl.productID}}</td>-->
           <!--<td *ngIf="textileEl.textileID != editRowId">{{textileEl.importUser}}</td>
