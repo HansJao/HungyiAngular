@@ -1,5 +1,8 @@
 <div class="container-fluid testimonial-group">
+      <input type="text" #keyword>
+      <button (click)="onSearch(keyword.value)">Search</button>
   <div class="row text-center">
+
     <div class="col-xs-12 col-sm-3 col-md-2" *ngFor="let textileEl of textileInfo">
       <button type="button" class="btn btn-block btn-outline btn-info"  routerLink="edit/{{textileEl.productID}}">{{textileEl.textileName}}</button>
        <table class="table table-hover table-striped">

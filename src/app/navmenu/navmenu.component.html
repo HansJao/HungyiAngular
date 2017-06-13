@@ -8,7 +8,7 @@
       </button>
       <a class="navbar-brand">宏羿</a>
     </div>
-    <div class="collapse navbar-collapse" [ngClass]="{ 'in': isIn }"> id="myNavbar">
+    <div class="collapse navbar-collapse" [ngClass]="{ 'in': isIn }" id="myNavbar">
       <ul class="nav navbar-nav">
         <li routerLinkActive="active" [routerLink]="['/home']"><a>首頁</a></li>
         <li routerLinkActive="active" class="dropdown" (mouseleave)="leave()" (mouseenter)="over()" [ngClass]="{ 'open': textileIsOpen == true }">
