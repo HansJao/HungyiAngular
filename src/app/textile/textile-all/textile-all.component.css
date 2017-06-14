@@ -22,11 +22,11 @@
 /*.col-xs-12:nth-child(3n+1) { background: #c69; }
 .col-xs-12:nth-child(3n+2) { background: #9c6; }
 .col-xs-12:nth-child(3n+3) { background: #69c; }*/
-/*.col-xs-6 {
+.col-xs-6 {
     float:none !important;
     margin-left:auto;
     margin-right:auto;
-}*/
+}
 
 
 #custom-search-input {

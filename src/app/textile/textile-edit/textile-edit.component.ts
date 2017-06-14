@@ -64,7 +64,7 @@ export class TextileEditComponent implements OnInit {
     });
   }
 
-   sortByWeight() {
+  sortByWeight() {
     this.weightIsDesc = !this.weightIsDesc;
     let direction = this.weightIsDesc ? 1 : -1;
     this.textileInfo = this.textileInfo.sort((a, b) => {
@@ -77,4 +77,13 @@ export class TextileEditComponent implements OnInit {
     });
   }
 
+  selectedFilter = "Filter By";
+  filterArray = ["顏色", "重量"];
+
+  onSearch(keyword: string) {
+    if (this.selectedFilter == "顏色")
+      this.textileInfo = this.textileInfo.filter(a => a.textileColor.includes(keyword));
+    if (this.selectedFilter == "重量")
+      this.textileInfo = this.textileInfo.filter(a => a.weight.toString().includes(keyword));
+  }
 }

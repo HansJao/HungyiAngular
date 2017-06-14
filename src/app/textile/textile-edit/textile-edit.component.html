@@ -1,5 +1,25 @@
 <div class="container-fluid">
   <div class="row text-center">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="input-group">
+        <div class="input-group-btn search-panel" appDropdown>
+          <button type="button" class="btn btn-default">
+            <span id="search_concept">{{selectedFilter}}</span> 
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li *ngFor="let filter of filterArray" (click)="selectedFilter = filter"><a>{{filter}}</a></li>
+          </ul>
+        </div>
+        <!--<input type="hidden" name="search_param" value="all" id="search_param">-->
+        <input type="text" class="form-control" name="x" placeholder="Search..." (change)="onSearch(keyword.value)" #keyword>
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button"  >
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+      </div>
+    </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
       <table class="table table-hover table-striped col-xs-12 col-sm-12 col-md-12">
         <thead>
@@ -14,7 +34,7 @@
             <th>註記</th>
           </tr>
         </thead>
-        <tr *ngFor="let textileEl of textileInfo" (click)="toggle(textileEl.textileID)" (change)="textChange(textileEl)" >
+        <tr *ngFor="let textileEl of textileInfo" (click)="toggle(textileEl.textileID)" (change)="textChange(textileEl)">
           <!--<td>{{textileEl.textileID}}</td>
           <td>{{textileEl.productID}}</td>-->
           <!--<td *ngIf="textileEl.textileID != editRowId">{{textileEl.importUser}}</td>
