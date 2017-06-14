@@ -1,3 +1,4 @@
+import { TextileInfo } from './../../models/textileInfo';
 import { TextileService } from './../../services/textile.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from "@angular/router";
@@ -9,10 +10,12 @@ import { ActivatedRoute, Params } from "@angular/router";
 })
 export class TextileEditComponent implements OnInit {
 
-  textileInfo;
+  textileInfo: TextileInfo[] = [];
   productID;
   editRowId: any;
   onEditTextile = [];
+  colorIsDesc = false;
+  weightIsDesc = false;
   constructor(private route: ActivatedRoute, private textileService: TextileService) { }
   toggle(val) {
     this.editRowId = val;
@@ -46,6 +49,32 @@ export class TextileEditComponent implements OnInit {
     } else {
       alert("已更新完成，還亂按什麼！");
     }
+  }
+
+  sortByColor() {
+    this.colorIsDesc = !this.colorIsDesc;
+    let direction = this.colorIsDesc ? 1 : -1;
+    this.textileInfo = this.textileInfo.sort((a, b) => {
+      if (a.textileColor < b.textileColor) {
+        return 1 * direction;
+      }
+      else {
+        return -1 * direction;
+      }
+    });
+  }
+
+   sortByWeight() {
+    this.weightIsDesc = !this.weightIsDesc;
+    let direction = this.weightIsDesc ? 1 : -1;
+    this.textileInfo = this.textileInfo.sort((a, b) => {
+      if (a.weight < b.weight) {
+        return 1 * direction;
+      }
+      else {
+        return -1 * direction;
+      }
+    });
   }
 
 }
