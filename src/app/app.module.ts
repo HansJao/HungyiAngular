@@ -24,6 +24,7 @@ import { TextileFormComponent } from './textile/textile-form/textile-form.compon
 import { ProductComponent } from './product/product.component';
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerAllComponent } from './customer/customer-all/customer-all.component';
+import { TextileShipmentsComponent } from './textile/textile-shipments/textile-shipments.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CustomerAllComponent } from './customer/customer-all/customer-all.compo
     TextileFormComponent,
     ProductComponent,
     CustomerComponent,
-    CustomerAllComponent
+    CustomerAllComponent,
+    TextileShipmentsComponent
   ],
   imports: [
     BrowserModule,

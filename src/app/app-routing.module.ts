@@ -1,3 +1,4 @@
+import { TextileShipmentsComponent } from './textile/textile-shipments/textile-shipments.component';
 import { CustomerAllComponent } from './customer/customer-all/customer-all.component';
 import { CustomerComponent } from './customer/customer.component';
 import { AuthGuardService } from './services/auth-guard.service';
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
     {
         path: 'textile',canActivate:[AuthGuardService], component: TextileComponent, children: [
             { path: '', component: TextileAllComponent },
+            { path: 'shipments', component: TextileShipmentsComponent },
             { path: 'edit/:id', component: TextileEditComponent },
             { path: 'add', component: TextileAddComponent }]
     },

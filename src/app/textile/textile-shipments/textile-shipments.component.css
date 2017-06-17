@@ -1,0 +1,19 @@
+/*.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open>.dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #00b3db;
+  border-color: red;
+}*/
+.btn{
+    border-width: 2px; 
+    margin-top: 10px;
+}
+.select:hover {
+  border-color: red;
+}
+.isSelect{
+    border-color: red;
+}
