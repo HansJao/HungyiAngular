@@ -14,6 +14,7 @@ export class NavmenuComponent implements OnInit {
   public elementRef;
   isIn = false;   // store state
   textileIsOpen = false;
+  customerIsOpen = false;
   constructor(private authService: AuthenticationService, myElement: ElementRef) {
     this.elementRef = myElement;
   }
@@ -27,29 +28,35 @@ export class NavmenuComponent implements OnInit {
     this.isIn = bool === false ? true : false;
   }
 
-  over() {
-    this.textileIsOpen = true;
+  over(activeName: any) {
+    if (activeName == "textile") {
+      this.textileIsOpen = true;
+    } else {
+      this.customerIsOpen = true;
+    }
   }
 
-  leave() {
-    this.textileIsOpen = false;
+  leave(activeName: any) {
+    if (activeName == "textile") {
+      this.textileIsOpen = false;
+    } else {
+      this.customerIsOpen = false;
+    }
   }
 
   handleClick(event) {
     var clickedComponent = event.target;
     var inside = false;
     do {
-      if (clickedComponent === this.elementRef.nativeElement) 
-      {
+      if (clickedComponent === this.elementRef.nativeElement) {
         inside = true;
       }
       clickedComponent = clickedComponent.parentNode;
     } while (clickedComponent && inside == false);
 
-    if (inside) 
-    {    } 
-    else 
-    {
+    if (inside)
+    { }
+    else {
       this.isIn = false;
     }
   }

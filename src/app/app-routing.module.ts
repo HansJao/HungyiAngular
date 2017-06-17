@@ -1,3 +1,5 @@
+import { CustomerAllComponent } from './customer/customer-all/customer-all.component';
+import { CustomerComponent } from './customer/customer.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { ProductComponent } from './product/product.component';
 import { TextileAllComponent } from './textile/textile-all/textile-all.component';
@@ -20,6 +22,12 @@ const appRoutes: Routes = [
             { path: '', component: TextileAllComponent },
             { path: 'edit/:id', component: TextileEditComponent },
             { path: 'add', component: TextileAddComponent }]
+    },
+    {
+        path: 'customer',canActivate:[AuthGuardService], component: CustomerComponent, children: [
+            { path: '', component: CustomerAllComponent }]
+          //  { path: 'edit/:id', component: TextileEditComponent },
+           // { path: 'add', component: TextileAddComponent }]
     },
     { path: 'product', component: ProductComponent },
 
