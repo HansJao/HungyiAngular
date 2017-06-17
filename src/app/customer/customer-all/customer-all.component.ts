@@ -1,3 +1,4 @@
+import { WebapiService } from './../../services/webapi.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerAllComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private webapi: WebapiService) { }
+  customerInfo;
+  editRowId: any;
   ngOnInit() {
+    this.webapi.onGet("/api/customer").subscribe(a => {
+      console.log(a);
+      this.customerInfo = a});
   }
 
 }

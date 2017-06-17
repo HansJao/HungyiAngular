@@ -1,3 +1,4 @@
+import { WebapiService } from './services/webapi.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthenticationService } from './services/authentication.service';
 import { ProductService } from './services/product.service';
@@ -53,7 +54,8 @@ import { CustomerAllComponent } from './customer/customer-all/customer-all.compo
     TextileService,
     ProductService,
     AuthenticationService,
-    AuthGuardService
+    AuthGuardService,
+    WebapiService
   ],
   bootstrap: [AppComponent]
 })
