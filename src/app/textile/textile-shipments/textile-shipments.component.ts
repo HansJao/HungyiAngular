@@ -36,7 +36,6 @@ export class TextileShipmentsComponent implements OnInit {
         this.selectedTextiles.splice(index, 1);
       }
     }
-
   }
 
   // chehckIsSelectTextile(productID): boolean {
@@ -45,4 +44,22 @@ export class TextileShipmentsComponent implements OnInit {
   //   }
   //   return false;
   // }
+  textileInfoList;
+  onGetSelectedTextile() {
+    this.webapi.onPost("/api/textile/GetTextileByListProductID", this.selectedTextiles).subscribe(a => {
+      console.log(a);
+      this.textileInfoList = a;
+    });
+    this.selectedTextileID = [];
+
+  }
+  selectedTextileID: any[] = [];
+  onSelectTextile(textileID: number) {
+    if (this.selectedTextileID.includes(textileID)) {
+      this.selectedTextileID.splice(this.selectedTextileID.indexOf(textileID),1)
+    } else {
+      this.selectedTextileID.push(textileID);
+    }
+
+  }
 }

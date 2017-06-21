@@ -2,20 +2,66 @@
   <h4>選擇客戶：</h4>
   <div class="row">
     <div class="col-md-2 col-sm-2 col-xs-3" *ngFor="let customer of customerInfo">
-      <button type="button" 
-      class="btn btn-primary btn-block"
-      (click)="selectedCustomers = customer.customerID"
-      [ngClass]="{'isSelect':selectedCustomers == customer.customerID}">{{customer.customerName}}</button>
+      <button type="button" class="btn btn-primary btn-block" (click)="selectedCustomers = customer.customerID" [ngClass]="{'isSelect':selectedCustomers == customer.customerID}">{{customer.customerName}}</button>
     </div>
   </div>
 
   <h4>選擇布種：</h4>
   <div class="row">
     <div class="col-md-2 col-sm-2 col-xs-3" *ngFor="let textileName of textileNames">
-      <button type="button" 
-      class="select btn btn-primary btn-block" 
-      [ngClass]="{'isSelect':selectedTextiles.includes(textileName.productID)}"
-      (click)="onTextileSelect(textileName.productID)">{{textileName.productName}}</button>
+      <button type="button" class="select btn btn-primary btn-block" [ngClass]="{'isSelect':selectedTextiles.includes(textileName.productID)}"
+        (click)="onTextileSelect(textileName.productID)">{{textileName.productName}}</button>
     </div>
   </div>
+  <div class="margin-20">
+    <button type="submit" class="btn btn-primary pull-right" (click)="onGetSelectedTextile()" >確認</button>
+  </div>
+  <div class="container-fluid">
+  <div class="row text-center">
+    <!--<div class="col-xs-8 col-xs-offset-2">
+      <div class="input-group">
+        <div class="input-group-btn search-panel" appDropdown>
+          <button type="button" class="btn btn-default">
+            <span id="search_concept">{{selectedFilter}}</span> 
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li *ngFor="let filter of filterArray" (click)="selectedFilter = filter"><a>{{filter}}</a></li>
+          </ul>
+        </div>-->
+    <!--<input type="hidden" name="search_param" value="all" id="search_param">-->
+    <!--<input type="text" class="form-control" name="x" placeholder="Search..." (change)="onSearch(keyword.value)" #keyword>
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button"  >
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+      </div>
+    </div>-->
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <table class="table table-hover table-active col-xs-12 col-sm-12 col-md-12">
+        <thead>
+          <tr>
+
+            <th>名稱</th>
+            <th>顏色</th>
+            <th>重量</th>
+            <th>成本</th>
+            <th>存放地</th>
+          </tr>
+        </thead>
+        <tr [ngClass]="{'danger':selectedTextileID.includes(textileEl.textileID)}" (click)="onSelectTextile(textileEl.textileID)" *ngFor="let textileEl of textileInfoList">
+          <td >{{textileEl.textileName}}</td>
+          <td >{{textileEl.textileColor}}</td>
+          <td >{{textileEl.weight}}</td>
+          <td >{{textileEl.cost}}</td>
+          <td >{{textileEl.stored}}</td>
+
+        </tr>
+      </table>
+    </div>
+    <button class="btn btn-primary pull-right">出貨</button>
+  </div>
+</div>
+
 </div>
