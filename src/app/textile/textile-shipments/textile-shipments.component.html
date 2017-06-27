@@ -5,20 +5,20 @@
       <button type="button" class="btn btn-primary btn-block" (click)="selectedCustomers = customer.customerID" [ngClass]="{'isSelect':selectedCustomers == customer.customerID}">{{customer.customerName}}</button>
     </div>
   </div>
-
-  <h4>選擇布種：</h4>
-  <div class="row">
-    <div class="col-md-2 col-sm-2 col-xs-3" *ngFor="let textileName of textileNames">
-      <button type="button" class="select btn btn-primary btn-block" [ngClass]="{'isSelect':selectedTextiles.includes(textileName.productID)}"
-        (click)="onTextileSelect(textileName.productID)">{{textileName.productName}}</button>
+  <div *ngIf="selectedCustomers != null">
+    <h4>選擇布種：</h4>
+    <div class="row">
+      <div class="col-md-2 col-sm-2 col-xs-3" *ngFor="let textileName of textileNames">
+        <button type="button" class="select btn btn-primary btn-block" [ngClass]="{'isSelect':selectedTextileID.includes(textileName.productID)}"
+          (click)="onTextileSelect(textileName.productID)">{{textileName.productName}}</button>
+      </div>
     </div>
-  </div>
-  <div class="margin-20">
-    <button type="submit" class="btn btn-primary pull-right" (click)="onGetSelectedTextile()" >確認</button>
-  </div>
-  <div class="container-fluid">
-  <div class="row text-center">
-    <!--<div class="col-xs-8 col-xs-offset-2">
+    <div class="margin-20">
+      <button type="submit" class="btn btn-primary pull-right" (click)="onGetSelectedTextile()">確認</button>
+    </div>
+    <div *ngIf="textileInfoList.length != 0" class="container-fluid">
+      <div class="row text-center">
+        <!--<div class="col-xs-8 col-xs-offset-2">
       <div class="input-group">
         <div class="input-group-btn search-panel" appDropdown>
           <button type="button" class="btn btn-default">
@@ -29,8 +29,8 @@
             <li *ngFor="let filter of filterArray" (click)="selectedFilter = filter"><a>{{filter}}</a></li>
           </ul>
         </div>-->
-    <!--<input type="hidden" name="search_param" value="all" id="search_param">-->
-    <!--<input type="text" class="form-control" name="x" placeholder="Search..." (change)="onSearch(keyword.value)" #keyword>
+        <!--<input type="hidden" name="search_param" value="all" id="search_param">-->
+        <!--<input type="text" class="form-control" name="x" placeholder="Search..." (change)="onSearch(keyword.value)" #keyword>
         <span class="input-group-btn">
             <button class="btn btn-default" type="button"  >
               <span class="glyphicon glyphicon-search"></span>
@@ -38,30 +38,53 @@
         </span>
       </div>
     </div>-->
-    <div class="col-xs-12 col-sm-12 col-md-12">
-      <table class="table table-hover table-active col-xs-12 col-sm-12 col-md-12">
-        <thead>
-          <tr>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <table class="table table-hover table-active col-xs-12 col-sm-12 col-md-12">
+            <thead>
+              <tr>
 
-            <th>名稱</th>
-            <th>顏色</th>
-            <th>重量</th>
-            <th>成本</th>
-            <th>存放地</th>
-          </tr>
-        </thead>
-        <tr [ngClass]="{'danger':selectedTextileID.includes(textileEl.textileID)}" (click)="onSelectTextile(textileEl.textileID)" *ngFor="let textileEl of textileInfoList">
-          <td >{{textileEl.textileName}}</td>
-          <td >{{textileEl.textileColor}}</td>
-          <td >{{textileEl.weight}}</td>
-          <td >{{textileEl.cost}}</td>
-          <td >{{textileEl.stored}}</td>
+                <th>名稱</th>
+                <th>顏色</th>
+                <th>重量</th>
+                <th>價格</th>
+                <th>成本</th>
+                <th>存放地</th>
+              </tr>
+            </thead>
+            <tr [ngClass]="{'danger':selectedTextile.includes(textileEl)}" (click)="onSelectTextile(textileEl)" *ngFor="let textileEl of textileInfoList">
+              <td>{{textileEl.textileName}}</td>
+              <td> <button type="button" (click)="setPopWindow(textileEl)" class="btn btn-info btn" data-toggle="modal" data-target="#myModal">{{textileEl.textileColor}}</button></td>
+              <td>{{textileEl.weight}}</td>
+              <td>{{textileEl.price}}</td>
+              <td>{{textileEl.cost}}</td>
+              <td>{{textileEl.stored}}</td>
 
-        </tr>
-      </table>
+            </tr>
+          </table>
+        </div>
+        <button class="btn btn-primary pull-right" (click)="sendShipment()">出貨</button>
+      </div>
     </div>
-    <button class="btn btn-primary pull-right">出貨</button>
   </div>
 </div>
+<!-- Modal -->
+<div id="myModal" class="modal fade in" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">設定價格</h4>
+      </div>
+      <div *ngIf="changeTextileEl != null" class="modal-body">
+        <p>{{changeTextileEl.textileName}} {{changeTextileEl.textileColor}}的價格： </p>
+        <input type="text" [(ngModel)]="textilePrice">
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="changeTextilePrice(changeTextileEl)" class="btn btn-default" data-dismiss="modal">確認</button>
+      </div>
+    </div>
+
+  </div>
 </div>
