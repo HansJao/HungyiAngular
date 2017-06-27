@@ -13,8 +13,6 @@ export class NavmenuComponent implements OnInit {
   isLogin: boolean = false;
   public elementRef;
   isIn = false;   // store state
-  textileIsOpen = false;
-  customerIsOpen = false;
   constructor(private authService: AuthenticationService, myElement: ElementRef) {
     this.elementRef = myElement;
   }
@@ -22,27 +20,7 @@ export class NavmenuComponent implements OnInit {
   ngOnInit() {
     this.authService.tokenEmit.subscribe(token => this.isLogin = token != null);
   }
-
-  toggleState() { // click handler
-    let bool = this.isIn;
-    this.isIn = bool === false ? true : false;
-  }
-
-  over(activeName: any) {
-    if (activeName == "textile") {
-      this.textileIsOpen = true;
-    } else {
-      this.customerIsOpen = true;
-    }
-  }
-
-  leave(activeName: any) {
-    if (activeName == "textile") {
-      this.textileIsOpen = false;
-    } else {
-      this.customerIsOpen = false;
-    }
-  }
+  
 
   handleClick(event) {
     var clickedComponent = event.target;
