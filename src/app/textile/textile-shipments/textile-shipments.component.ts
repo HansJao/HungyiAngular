@@ -11,41 +11,34 @@ export class TextileShipmentsComponent implements OnInit {
 
   constructor(private webapi: WebapiService) { }
   customerInfo;
-  textileNames;
+  productInfo;
+  selectedCustomers;
+
   ngOnInit() {
     this.webapi.onGet("/api/customer").subscribe(a => {
       this.customerInfo = a;
     });
     this.webapi.onGet("/api/product").subscribe(a => {
-      this.textileNames = a
+      this.productInfo = a
     })
   }
-  selectedCustomers;
-  // onSelectCustomer(selectedCustomer) {
-  //   console.log(selectedCustomer);
-  //   this.selectedCustomers = selectedCustomer;
-  // }
-  selectedTextileID: any[] = [];
-  onTextileSelect(productID) {
-    if (!this.selectedTextileID.includes(productID)) {
-      this.selectedTextileID.push(productID);
+
+  selectedProductID: any[] = [];
+  onProductSelect(productID) {
+    console.log(productID);
+    if (!this.selectedProductID.includes(productID)) {
+      this.selectedProductID.push(productID);
     } else {
-      let index: number = this.selectedTextileID.indexOf(productID);
+      let index: number = this.selectedProductID.indexOf(productID);
       if (index !== -1) {
-        this.selectedTextileID.splice(index, 1);
+        this.selectedProductID.splice(index, 1);
       }
     }
   }
 
-  // chehckIsSelectTextile(productID): boolean {
-  //   if (this.selectedTextiles.includes(productID)) {
-  //     return true;
-  //   }
-  //   return false;
-  // }
   textileInfoList: any[] = [];
   onGetSelectedTextile() {
-    this.webapi.onPost("/api/textile/GetTextileByListProductID", this.selectedTextileID).subscribe(a => {
+    this.webapi.onPost("/api/textile/GetTextileByListProductID", this.selectedProductID).subscribe(a => {
       this.textileInfoList = a;
     });
     this.selectedTextile = [];
@@ -61,14 +54,14 @@ export class TextileShipmentsComponent implements OnInit {
   }
 
   sendShipment() {
-    console.log(this.selectedTextile);
-    // var shipmentInfo = new  ShipmentInfo();
-    // shipmentInfo.CustomerID = this.selectedCustomers;
-    // shipmentInfo.TextileID = this.selectedTextileID;
-    // this.webapi.onPost("/api/order/SendShipmentInfo", shipmentInfo).subscribe(a => {
-    //   console.log(a);
-    //   this.textileInfoList = a;
-    // });
+    var shipmentInfo = new ShipmentInfo();
+    shipmentInfo.CustomerID = this.selectedCustomers;
+    shipmentInfo.Textile = this.selectedTextile;
+    console.log(shipmentInfo);
+    this.webapi.onPost("/api/order/SendShipmentInfo", shipmentInfo).subscribe(a => {
+      console.log(a);
+      this.textileInfoList = a;
+    });
     // console.log(shipmentInfo);
     // this.selectedTextile.filter(a => a.textileColor == "黑").forEach(a => a.price = 2000);
     // console.log(this.selectedTextile.filter(a => a.textileColor == "黑"));
