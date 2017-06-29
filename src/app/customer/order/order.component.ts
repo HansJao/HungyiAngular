@@ -1,3 +1,4 @@
+import { WebapiService } from './../../services/webapi.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private webapi: WebapiService) { }
 
   ngOnInit() {
+
+  }
+  orderInfo;
+  onChangeCustomer(customerID: number) {
+    this.webapi.onPost("/api/order/GetOrder", customerID).subscribe(order =>
+      this.orderInfo = order
+    );
+  }
+  orderDetailInfo;
+  onChangeOrderID(orderID: number) {
+    this.webapi.onPost("/api/order/GetOrderDetailByOrderID", orderID).subscribe(orderDetail =>
+      console.log(orderDetail)
+    );
   }
 
 }

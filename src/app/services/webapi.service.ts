@@ -28,6 +28,7 @@ export class WebapiService {
   onPost(uri: string, textileAddInfo) {
     let header: Headers = new Headers();
     header.append("Authorization", localStorage.getItem('userToken'));
+    header.append("Content-Type","application/json");
     let options = new RequestOptions({ headers: header });
     return this.http.post(uri, textileAddInfo, options)
       .map(res => res.json());
