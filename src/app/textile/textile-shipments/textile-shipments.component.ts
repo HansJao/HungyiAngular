@@ -10,14 +10,14 @@ import { Component, OnInit } from '@angular/core';
 export class TextileShipmentsComponent implements OnInit {
 
   constructor(private webapi: WebapiService) { }
-  customerInfo;
+  // customerInfo;
   productInfo;
   selectedCustomers;
 
   ngOnInit() {
-    this.webapi.onGet("/api/customer").subscribe(a => {
-      this.customerInfo = a;
-    });
+    // this.webapi.onGet("/api/customer").subscribe(a => {
+    //   this.customerInfo = a;
+    // });
     this.webapi.onGet("/api/product").subscribe(a => {
       this.productInfo = a
     })

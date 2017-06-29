@@ -1,0 +1,6 @@
+<h4>選擇客戶：</h4>
+  <div class="row">
+    <div class="col-md-2 col-sm-2 col-xs-3" *ngFor="let customer of customerInfo">
+      <button type="button" class="btn btn-primary btn-block" (click)="onCustomerChange(customer.customerID)" [ngClass]="{'isSelect':selectedCustomers == customer.customerID}">{{customer.customerName}}</button>
+    </div>
+  </div>

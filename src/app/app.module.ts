@@ -26,6 +26,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { CustomerAllComponent } from './customer/customer-all/customer-all.component';
 import { TextileShipmentsComponent } from './textile/textile-shipments/textile-shipments.component';
 import { OrderComponent } from './customer/order/order.component';
+import { CustomerSelectComponent } from './customer/customer-select/customer-select.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { OrderComponent } from './customer/order/order.component';
     CustomerComponent,
     CustomerAllComponent,
     TextileShipmentsComponent,
-    OrderComponent
+    OrderComponent,
+    CustomerSelectComponent
   ],
   imports: [
     BrowserModule,
