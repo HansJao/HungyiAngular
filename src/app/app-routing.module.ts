@@ -1,3 +1,4 @@
+import { OrderComponent } from './customer/order/order.component';
 import { TextileShipmentsComponent } from './textile/textile-shipments/textile-shipments.component';
 import { CustomerAllComponent } from './customer/customer-all/customer-all.component';
 import { CustomerComponent } from './customer/customer.component';
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     },
     {
         path: 'customer',canActivate:[AuthGuardService], component: CustomerComponent, children: [
-            { path: '', component: CustomerAllComponent }]
+            { path: '', component: CustomerAllComponent },
+            { path: 'order', component: OrderComponent }]
           //  { path: 'edit/:id', component: TextileEditComponent },
            // { path: 'add', component: TextileAddComponent }]
     },

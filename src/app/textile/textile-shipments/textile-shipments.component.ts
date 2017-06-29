@@ -1,4 +1,4 @@
-import { ShipmentInfo, Textile, TextileData } from './../../models/shipmentInfo';
+import { ShipmentInfo} from './../../models/shipmentInfo';
 import { WebapiService } from './../../services/webapi.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -54,13 +54,14 @@ export class TextileShipmentsComponent implements OnInit {
   }
 
   sendShipment() {
+    var userID = localStorage.getItem('userID');
     var shipmentInfo = new ShipmentInfo();
     shipmentInfo.CustomerID = this.selectedCustomers;
     shipmentInfo.Textile = this.selectedTextile;
-    console.log(shipmentInfo);
+    shipmentInfo.UserID = +userID;
+
     this.webapi.onPost("/api/order/SendShipmentInfo", shipmentInfo).subscribe(a => {
-      console.log(a);
-      this.textileInfoList = a;
+      alert("訂單編號：" + a);
     });
     // console.log(shipmentInfo);
     // this.selectedTextile.filter(a => a.textileColor == "黑").forEach(a => a.price = 2000);
