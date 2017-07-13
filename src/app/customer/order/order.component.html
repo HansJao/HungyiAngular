@@ -1,27 +1,28 @@
 <app-customer-select (customerChange)="onChangeCustomer($event)"></app-customer-select>
-<div  class="container-fluid">
-      <div class="row text-center">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <table class="table table-hover table-active col-xs-12 col-sm-12 col-md-12">
-            <thead>
-              <tr>
-                <th>出貨人</th>
-                <th>總價格</th>
-                <th>總成本</th>
-                <th>總數量</th>
-                <th>建立時間</th>
-              </tr>
-            </thead>
-            <tr *ngFor="let order of orderInfo" (click)=onChangeOrderID(order.orderID)>
-              <td>{{order.userName}}</td>
-              <td>{{order.totalPrice}}</td>
-              <td>{{order.totalCost}}</td>
-              <td>{{order.totalQuantity}}</td>
-              <td>{{order.createDate}}</td>
+<div class="container-fluid">
+  <div class="row text-center">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <table class="table table-hover table-active col-xs-12 col-sm-12 col-md-12">
+        <thead>
+          <tr>
+            <th>出貨人</th>
+            <th>總價格</th>
+            <th>總成本</th>
+            <th>總數量</th>
+            <th>建立時間</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let order of orderInfo" (click)=onChangeOrderID(order.orderID)>
+          <td>{{order.userName}}</td>
+          <td>{{order.totalPrice}}</td>
+          <td>{{order.totalCost}}</td>
+          <td>{{order.totalQuantity}}</td>
+          <td>{{order.createDate| date: 'yyyy/MM/dd hh:mm:ss'}}</td>
 
-            </tr>
-          </table>
-        </div>
-        <!--<button class="btn btn-primary pull-right" >出貨</button>-->
-      </div>
+        </tr>
+      </table>
     </div>
+   <app-order-detail [orderID]="orderID"></app-order-detail>
+    <!--<button class="btn btn-primary pull-right" >出貨</button>-->
+  </div>
+</div>

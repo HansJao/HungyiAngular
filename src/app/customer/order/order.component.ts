@@ -18,12 +18,15 @@ export class OrderComponent implements OnInit {
     this.webapi.onPost("/api/order/GetOrder", customerID).subscribe(order =>
       this.orderInfo = order
     );
+    this.orderID = null;
   }
-  orderDetailInfo;
+  // orderDetailInfo;
+  orderID: number;
   onChangeOrderID(orderID: number) {
-    this.webapi.onPost("/api/order/GetOrderDetailByOrderID", orderID).subscribe(orderDetail =>
-      console.log(orderDetail)
-    );
+    this.orderID = orderID;
+    // this.webapi.onPost("/api/order/GetOrderDetailByOrderID", orderID).subscribe(orderDetail =>
+    //   console.log(orderDetail)
+    // );
   }
 
 }
