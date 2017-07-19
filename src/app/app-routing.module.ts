@@ -26,7 +26,8 @@ const appRoutes: Routes = [
             { path: 'shipments', component: TextileShipmentsComponent },
             { path: 'edit/:id', component: TextileEditComponent },
             { path: 'add', component: TextileAddComponent },
-            { path: 'orderresult', component: OrderResultComponent }]
+            { path: 'orderresult', component: OrderResultComponent },
+            { path: 'product', component: ProductComponent }]
     },
     {
         path: 'customer', canActivate: [AuthGuardService], component: CustomerComponent, children: [
@@ -35,7 +36,7 @@ const appRoutes: Routes = [
         //  { path: 'edit/:id', component: TextileEditComponent },
         // { path: 'add', component: TextileAddComponent }]
     },
-    { path: 'product', component: ProductComponent },
+    
 
 
 

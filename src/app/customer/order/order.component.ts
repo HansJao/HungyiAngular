@@ -1,3 +1,4 @@
+import { CustomerInfo } from './../../models/customerInfo';
 import { WebapiService } from './../../services/webapi.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -14,8 +15,8 @@ export class OrderComponent implements OnInit {
 
   }
   orderInfo;
-  onChangeCustomer(customerID: number) {
-    this.webapi.onPost("/api/order/GetOrder", customerID).subscribe(order =>
+  onChangeCustomer(customerInfo: CustomerInfo) {
+    this.webapi.onPost("/api/order/GetOrder", customerInfo.CustomerID).subscribe(order =>
       this.orderInfo = order
     );
     this.orderID = null;

@@ -15,6 +15,7 @@
           <a class="dropdown-toggle" data-toggle="dropdown">布種<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a [routerLink]="['/textile']">所有布</a></li>
+            <li><a [routerLink]="['/textile/product']">新增布種</a></li>
             <li><a [routerLink]="['/textile/add']">新增布</a></li>
             <li><a [routerLink]="['/textile/shipments']">出布</a></li>
           </ul>
@@ -26,7 +27,6 @@
             <li><a [routerLink]="['customer/order']">訂單</a></li>
           </ul>
         </li>
-        <li routerLinkActive="active" [routerLink]="['/product']"><a>品名</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a *ngIf="isLogin == true"><span class="glyphicon glyphicon-user"></span> User Info</a></li>
