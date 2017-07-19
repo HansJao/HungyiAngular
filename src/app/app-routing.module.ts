@@ -1,3 +1,4 @@
+import { OrderResultComponent } from './textile/order-result/order-result.component';
 import { OrderComponent } from './customer/order/order.component';
 import { TextileShipmentsComponent } from './textile/textile-shipments/textile-shipments.component';
 import { CustomerAllComponent } from './customer/customer-all/customer-all.component';
@@ -20,18 +21,19 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'home', component: HomeComponent },
     {
-        path: 'textile',canActivate:[AuthGuardService], component: TextileComponent, children: [
+        path: 'textile', canActivate: [AuthGuardService], component: TextileComponent, children: [
             { path: '', component: TextileAllComponent },
             { path: 'shipments', component: TextileShipmentsComponent },
             { path: 'edit/:id', component: TextileEditComponent },
-            { path: 'add', component: TextileAddComponent }]
+            { path: 'add', component: TextileAddComponent },
+            { path: 'orderresult', component: OrderResultComponent }]
     },
     {
-        path: 'customer',canActivate:[AuthGuardService], component: CustomerComponent, children: [
+        path: 'customer', canActivate: [AuthGuardService], component: CustomerComponent, children: [
             { path: '', component: CustomerAllComponent },
             { path: 'order', component: OrderComponent }]
-          //  { path: 'edit/:id', component: TextileEditComponent },
-           // { path: 'add', component: TextileAddComponent }]
+        //  { path: 'edit/:id', component: TextileEditComponent },
+        // { path: 'add', component: TextileAddComponent }]
     },
     { path: 'product', component: ProductComponent },
 

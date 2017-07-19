@@ -28,6 +28,7 @@ import { TextileShipmentsComponent } from './textile/textile-shipments/textile-s
 import { OrderComponent } from './customer/order/order.component';
 import { CustomerSelectComponent } from './customer/customer-select/customer-select.component';
 import { OrderDetailComponent } from './customer/order-detail/order-detail.component';
+import { OrderResultComponent } from './textile/order-result/order-result.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { OrderDetailComponent } from './customer/order-detail/order-detail.compo
     TextileShipmentsComponent,
     OrderComponent,
     CustomerSelectComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    OrderResultComponent
   ],
   imports: [
     BrowserModule,

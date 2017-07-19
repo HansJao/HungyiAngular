@@ -1,5 +1,7 @@
+
 import { WebapiService } from './../../services/webapi.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { CustomerInfo } from "app/models/customerInfo";
 
 @Component({
   selector: 'app-customer-select',
@@ -9,7 +11,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class CustomerSelectComponent implements OnInit {
   customerInfo;
   constructor(private webapi: WebapiService) { }
-  @Output() customerChange: EventEmitter<number> = new EventEmitter<number>();
+  @Output() customerChange: EventEmitter<CustomerInfo> = new EventEmitter<CustomerInfo>();
 
   ngOnInit() {
     this.webapi.onGet("/api/customer").subscribe(a => {
@@ -17,9 +19,12 @@ export class CustomerSelectComponent implements OnInit {
     });
   }
   selectedCustomers;
-  onCustomerChange(customerID){
+  onCustomerChange(customerID: number, customerName: string) {
+    var customerInfo = new CustomerInfo();
+    customerInfo.CustomerID = customerID;
+    customerInfo.CustomerName = customerName;
     this.selectedCustomers = customerID;
-    this.customerChange.emit(customerID);
+    this.customerChange.emit(customerInfo);
   }
 
 }

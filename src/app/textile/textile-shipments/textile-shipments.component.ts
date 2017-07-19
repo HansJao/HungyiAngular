@@ -1,4 +1,6 @@
-import { ShipmentInfo} from './../../models/shipmentInfo';
+import { CustomerInfo } from './../../models/customerInfo';
+import { Router } from '@angular/router';
+import { ShipmentInfo } from './../../models/shipmentInfo';
 import { WebapiService } from './../../services/webapi.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,10 +11,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TextileShipmentsComponent implements OnInit {
 
-  constructor(private webapi: WebapiService) { }
+  constructor(private router: Router, private webapi: WebapiService) { }
   // customerInfo;
   productInfo;
-  selectedCustomers;
+  selectedCustomers: CustomerInfo;
 
   ngOnInit() {
     // this.webapi.onGet("/api/customer").subscribe(a => {
@@ -22,6 +24,7 @@ export class TextileShipmentsComponent implements OnInit {
       this.productInfo = a
     })
   }
+
 
   selectedProductID: any[] = [];
   onProductSelect(productID) {
@@ -56,12 +59,23 @@ export class TextileShipmentsComponent implements OnInit {
   sendShipment() {
     var userID = localStorage.getItem('userID');
     var shipmentInfo = new ShipmentInfo();
-    shipmentInfo.CustomerID = this.selectedCustomers;
+    shipmentInfo.CustomerID = this.selectedCustomers.CustomerID;
     shipmentInfo.Textile = this.selectedTextile;
     shipmentInfo.UserID = +userID;
 
     this.webapi.onPost("/api/order/SendShipmentInfo", shipmentInfo).subscribe(a => {
-      alert("訂單編號：" + a);
+      if (a == 0) {
+        alert("送出訂單失敗");
+      } else {
+        alert("訂單編號：" + a);
+        let navigationExtras = {
+          queryParams: {
+            "orderID": a,
+            "customerName": this.selectedCustomers.CustomerName
+          }
+        };
+        this.router.navigate(["textile/orderresult"], navigationExtras);
+      }
     });
     // console.log(shipmentInfo);
     // this.selectedTextile.filter(a => a.textileColor == "黑").forEach(a => a.price = 2000);

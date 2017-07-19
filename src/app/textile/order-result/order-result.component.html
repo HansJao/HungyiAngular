@@ -1,0 +1,23 @@
+<p>
+  {{customerName}}的訂單
+</p>
+<div class="col-xs-12 col-sm-12 col-md-12">
+  <table *ngIf="orderDetail?.length != 0 && orderDetail != null" class="table table-hover table-active col-xs-12 col-sm-12 col-md-12">
+    <thead>
+      <tr>
+        <th>布種</th>
+        <th>顏色</th>
+        <th>價格</th>
+        <th>成本</th>
+        <th>重量</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let order of orderDetail">
+      <td>{{order.textileName}}</td>
+      <td>{{order.textileColor}}</td>
+      <td>{{order.price}}</td>
+      <td>{{order.cost}}</td>
+      <td>{{order.weight}}</td>
+    </tr>
+  </table>
+</div>
